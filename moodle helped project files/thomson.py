@@ -1,6 +1,39 @@
 #Raja Naseer Ahmed Khan G00351263
 #Graph Theory Project
 
+#============= Shunting Yard Algorithm ======================
+def shunt(infix):
+
+	specials = {'*': 50, '.': 40, '|': 30}
+
+	pofix = ""
+	stack = ""
+
+	for c in infix:
+		if c == '(':
+			stack = stack + c
+		elif c == ')':
+			while stack[-1] != '(':
+				pofix, stack = pofix + stack[-1], stack[:-1]	
+			stack = stack[:-1]
+		
+		elif c in specials:
+			while stack and specials.get(c, 0) <= specials.get(stack[-1], 0):
+				pofix, stack = pofix + stack[-1], stack[:-1]
+			stack = stack + c
+		else:
+			pofix = pofix + c
+					
+	while stack:
+		pofix, stack = pofix + stack[-1], stack[:-1]
+
+	return pofix
+	
+#print(shunt("(a.b)|(c*.d)"))
+
+
+
+#======================Thomson Constructions========================
 class state:
 	label = None
 	edge1 = None
@@ -91,7 +124,52 @@ def compile(pofix):
 				
 				# nfastack should only have a single nfa on it at this point.
 	return nfastack.pop()
-
 	
-print(compile("ab.cd.|"))
-print(compile("aa.*"))
+
+def followes(state):
+	states = set()
+	states.add(state)
+	
+	if state.label is None:
+		if state.edge1 is not None:
+			states |= followes(state.edge1)
+		
+		if state.edge2 is not None:
+			states |= followes(state.edge2)
+		
+	return states
+	
+def match(infix, string):
+	postfix = shunt(infix)
+	nfa = compile(postfix)
+	
+	current = set()
+	next = set()
+	
+	current |= followes(nfa.initial)
+	
+	for s in string:
+		for c in current:
+			if c.label == s:
+				next |= followes(c.edge1)
+		current = next
+		next = set()
+	
+	return (nfa.accept in current)
+		
+
+#===========================================
+infixes = ["a.b.c*", "a.(b|d).c*", "(a.(b|d))*", "a.(b.b)*.c"]
+strings = ["", "abc", "abbc", "abcc", "abad", "abbbc"]
+
+for i in infixes:
+	for s in strings:
+		print(match(i, s), i, s)
+	
+#print(compile("ab.cd.|"))
+#print(compile("aa.*"))
+
+
+#==================================================
+
+
