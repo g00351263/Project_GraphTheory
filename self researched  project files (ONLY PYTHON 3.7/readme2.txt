@@ -1,7 +1,7 @@
 Raja Naseer Ahmed Khan G00351263.
 https://github.com/g00351263/Project_GraphTheory.git
 
-Package Includes: 4 files 
+Package Includes: 6 files including following: 
 
 ===================================================================================
 2 self researched project files. (Note. Use Python 3.7.2 Shell otherwise won't run)

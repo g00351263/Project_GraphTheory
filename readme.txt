@@ -14,5 +14,6 @@ Package Includes:
 		2.(stringToNFA.py),
 		3.(ownInfixToPostFix),
 		4.(research.txt),
-		5.(readme2.txt) 
+		5.(readme2.txt),
+		6.(grap algorithm.txt) 
 	

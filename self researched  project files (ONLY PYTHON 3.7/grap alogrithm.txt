@@ -1,0 +1,18 @@
+Infix To Postfix:
+
+Operators precedence: Lower  +-    */     ^  Higher
+			    <--------------->
+
+For each char ....(if it is)
+
+1.	Operand -> print
+2.	Left parenthesis -> push
+3.	Right parenthesis -> pop and print until left parenthesis is found, discard '('
+4. 	Operator
+	1. Stack is empty or has a left parenthesis on top -> push
+	2. Precedence is .. than the top of stack
+		1. Higher -> push
+		2. Lower or Equals -> pop print and repeat step 4.0.0
+
+
+Expression ended.. pop and print all operators from stack.
