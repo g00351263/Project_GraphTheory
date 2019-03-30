@@ -1,4 +1,5 @@
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~Raja Naseer Ahmed Khan G00351263 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 # Stack class
 class Stack:
     def __init__(self, size):
@@ -102,7 +103,7 @@ def toPostfix(expression):
     return result
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# test
+# test some the expressions below -----------
 infixExps = [
     'A*B+C',    # AB*C+
     'A+B*C',    # ABC*+ 
@@ -113,7 +114,7 @@ infixExps = [
     '(A+B)*C+D/(E+F*G)-H',  # AB+C*DEFG*+/+H-
     'A-B-C*(D+E/F-G)-H'     # AB-CDEF/+G-*-H-
 ]
-
+#------ Looping through all the infixes in array with results ------
 for exp in infixExps:
     postfix = toPostfix(exp)
     print(f'Infix:{exp}->Postfix:{postfix}')

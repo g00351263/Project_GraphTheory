@@ -158,10 +158,11 @@ def match(infix, string):
 	return (nfa.accept in current)
 		
 
-#===========================================
-infixes = ["a.b.c*", "a.(b|d).c*", "(a.(b|d))*", "a.(b.b)*.c"]
-strings = ["", "abc", "abbc", "abcc", "abad", "abbbc"]
+#=====================Expressions to be compared  Here as set of list/array ======================#
+infixes = ["a.b.c*", "a.(b|d).c*", "(a.(b|d))*", "a.(b.b)*.c","a+b+c*d"]
+strings = ["", "abc", "abbc", "abcc", "abad", "abbbc","abcd"]
 
+#======= looping through the expressions to get results =====#
 for i in infixes:
 	for s in strings:
 		print(match(i, s), i, s)
