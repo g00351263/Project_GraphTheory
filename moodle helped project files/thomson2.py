@@ -4,7 +4,7 @@
 #============= Shunting Yard Algorithm ======================
 def shunt(infix):
 
-	specials = {'*': 50, '.': 40, '|': 30, '+':20}
+	specials = {'*': 50, '.': 40, '|': 30, '?':20}
 
 	pofix = ""
 	stack = ""
